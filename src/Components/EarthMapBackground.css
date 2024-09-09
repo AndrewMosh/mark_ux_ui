@@ -1,0 +1,42 @@
+.background-container {
+    position: relative;
+    overflow: hidden;
+    width: 100vw; /* Ширина контейнера */
+    height: 100vh; /* Высота контейнера */
+}
+
+.img1,
+.img2 {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100vw; /* Ширина изображений */
+    top: 0;
+    will-change: transform;
+}
+
+.img1 {
+    animation: mymove 100.6s linear infinite;
+}
+
+.img2 {
+    animation: mymove2 100.6s linear infinite;
+}
+
+@keyframes mymove {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-110%);
+    }
+}
+
+@keyframes mymove2 {
+    from {
+        transform: translateX(110%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
