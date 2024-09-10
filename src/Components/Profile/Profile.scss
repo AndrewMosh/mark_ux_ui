@@ -1,0 +1,24 @@
+.profile {
+	padding: 20px;
+    &__container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        margin-left: 12px;
+        display: flex;
+        flex-direction: column;
+		gap:4px;
+    }
+
+    &__name {
+        color: #fff;
+        font-variant-numeric: lining-nums proportional-nums;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+	
+}

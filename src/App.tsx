@@ -1,11 +1,11 @@
 import './App.css'
-import EarthMapBackground from './Components/EarthMapBackground'
-
-
+import { Sidebar } from './Components/Sidebar/Sidebar'
+import { Outlet } from 'react-router-dom'
 function App() {
   return (
     <>
-	  <EarthMapBackground />
+		<Sidebar />
+		<Outlet />
     </>
   )
 }

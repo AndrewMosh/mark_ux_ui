@@ -1,0 +1,35 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ffffff08;
+    border-bottom: 1px solid #ffffff08;
+    padding: 20px 16px;
+	
+
+    &__item {
+        padding: 16px;
+        border: 1px solid transparent;
+		cursor: pointer;
+		border-radius: var(--24, 24px);
+		background-color: transparent;
+		transition: all 0.3s ease;
+
+        &:hover {
+            border: 1px solid var(--Accent-20, #ffdb96);
+            background: var(
+                --Accent-10,
+                radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
+            );
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: 400;
+		color:white;
+        line-height: 24px; /* 150% */
+    }
+}
