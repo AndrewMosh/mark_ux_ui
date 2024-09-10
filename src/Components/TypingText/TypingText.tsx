@@ -8,36 +8,41 @@ export const TypingText: React.FC = () => {
     const [text, setText] = useState(initialText);
     const [showTyping, setShowTyping] = useState(false);
     const [showText, setShowText] = useState(true);
+    const [fade, setFade] = useState(true); // Для управления плавностью
 
     useEffect(() => {
         const initialTimeout = setTimeout(() => {
-            setShowText(false);
-            setShowTyping(true);
+            setTimeout(() => {
+                setShowText(false);
+                setShowTyping(true);
 
-            const typingTimeout = setTimeout(() => {
-                setShowTyping(false);
-                const randomText = randomTexts[Math.floor(Math.random() * randomTexts.length)];
-                setText(randomText);
-                setShowText(true);
+                const typingTimeout = setTimeout(() => {
+                    setShowTyping(false);
+                    const randomText = randomTexts[Math.floor(Math.random() * randomTexts.length)];
+                    setText(randomText);
+                    setFade(true); // Плавное появление текста
+                    setShowText(true);
 
-                const randomTextTimeout = setTimeout(() => {
-                    setShowText(false);
-                    setShowTyping(true);
+                    const randomTextTimeout = setTimeout(() => {
+                        setFade(false); // Плавное исчезновение рандомного текста
+                        setTimeout(() => {
+                            setShowText(false);
+                            const resetTextTimeout = setTimeout(() => {
+                                setFade(true);
+                                setText(initialText);
+                                setShowText(true);
+                            }, 1000);
 
-                    const resetTextTimeout = setTimeout(() => {
-                        setShowTyping(false);
-                        setText(initialText);
-                        setShowText(true);
+                            return () => clearTimeout(resetTextTimeout);
+                        }, 1000); // Задержка перед исчезновением текста
+
+                        return () => clearTimeout(randomTextTimeout);
                     }, 5000);
 
-                    return () => clearTimeout(resetTextTimeout);
-                }, 5000);
-
-                return () => clearTimeout(randomTextTimeout);
-            }, 2300);
-
-            return () => clearTimeout(typingTimeout);
-        }, 20000);
+                    return () => clearTimeout(typingTimeout);
+                }, 2300);
+            }, 1000); // Делаем задержку для анимации скрытия текста
+        }, 10000);
 
         return () => clearTimeout(initialTimeout);
     }, [text]);
@@ -52,7 +57,7 @@ export const TypingText: React.FC = () => {
                     <div className="text">Печатает</div>
                 </>
             ) : (
-                <p className="text">{text}</p>
+                <p className={`text ${fade ? "fade-in" : "fade-out"}`}>{text}</p>
             )}
         </div>
     );

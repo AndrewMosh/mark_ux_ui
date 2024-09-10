@@ -41,4 +41,15 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 16px; /* 114.286% */
+	opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
