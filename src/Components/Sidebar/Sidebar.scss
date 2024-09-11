@@ -1,5 +1,5 @@
 .sidebar {
-    position: fixed;
+    position: absolute;
     top: 24px;
     left: 24px;
     height: 94vh;
@@ -25,12 +25,12 @@
         font-style: normal;
         font-weight: 500;
         line-height: 8px; /* 88.889% */
-		padding-bottom: 16px;
+        padding-bottom: 16px;
     }
 
     &__copyright {
         color: var(--White-25, rgba(255, 255, 255, 0.25));
-		display: block;
+        display: block;
         text-align: center;
         font-family: Montserrat;
         font-size: 12px;
@@ -38,7 +38,20 @@
         font-weight: 500;
         line-height: 16px; /* 133.333% */
         text-decoration-line: underline;
-		padding: 16px;
-		border-top: 1px solid #ffffff08;
+        padding: 16px;
+        border-top: 1px solid #ffffff08;
     }
+}
+
+.example {
+    max-width: 320px;
+    padding: 16px;
+    font-variant-numeric: lining-nums proportional-nums;
+    border-radius: var(--16, 16px) !important;
+    background: #151515 !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-left: 100px;
+    z-index: 12 !important;
 }

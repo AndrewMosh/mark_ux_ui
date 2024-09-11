@@ -1,0 +1,10 @@
+.about {
+	overflow: scroll;
+	height: 100vh;
+	position: relative;
+
+	&__header {
+		position: sticky;
+		top: 24px;
+	}
+}
