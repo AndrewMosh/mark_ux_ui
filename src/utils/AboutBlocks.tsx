@@ -94,8 +94,8 @@ export const blocks: Block[] = [
         title: "Опыт",
         text: (
             <>
-                {experiences.map((experience) => (
-                    <div>
+                {experiences.map((experience, index) => (
+                    <div key={index}>
                         {experience.text}{" "}
                         <a style={{ color: "#F9C35D" }} href={experience.site} target="_blank">
                             {experience.site}

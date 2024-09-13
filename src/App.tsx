@@ -1,6 +1,7 @@
 import "./App.css";
 import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
+import Player from "./Components/Player/Player";
 function App() {
     const location = useLocation();
 
@@ -9,6 +10,8 @@ function App() {
     return (
         <div className="app">
             <Sidebar />
+			<Player />
+
             {!applyAppBodyClass ? (
                 <div className="app__body">
                     <Outlet />

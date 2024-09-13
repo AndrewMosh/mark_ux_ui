@@ -38,6 +38,7 @@ h1 {
 button {
     border: none;
     cursor: pointer;
+	background: none;
 }
 button:hover {
     border-color: none;
