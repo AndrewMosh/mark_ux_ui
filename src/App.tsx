@@ -1,7 +1,7 @@
 import "./App.css";
 import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
-import Player from "./Components/Player/Player";
+import { MediaInfoPlayer } from "./Components/MediaInfoPlayer/MediaInfoPlayer";
 function App() {
     const location = useLocation();
 
@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="app">
             <Sidebar />
-			<Player />
+			<MediaInfoPlayer />
 
             {!applyAppBodyClass ? (
                 <div className="app__body">

@@ -16,7 +16,7 @@ const Player: React.FC = () => {
   useEffect(() => {
     if (window.Twitch && playerRef.current) {
       const newPlayer = new window.Twitch.Player(playerRef.current, {
-        channel: 'relaxbeats', // Замените на нужный канал Twitch
+        channel: 'leekbeats', // Замените на нужный канал Twitch
         autoplay: true, // Включаем автозапуск
         muted: isMuted, // Начальное состояние звука
         width: '0',  // Скрываем плеер
@@ -63,7 +63,7 @@ const Player: React.FC = () => {
     <div className='player'>
       <div className='player__wrapper' ref={playerRef} onClick={handleUserInteraction}></div> {/* Скрытый плеер */}
 	  <div className="player__buttons">
-		<Link  to='https://www.twitch.tv/relaxbeats' target="_blank">
+		<Link  to='https://www.twitch.tv/leekbeats' target="_blank">
 		<button>
 		<img src={youtube} alt="twitch" />
 		</button>

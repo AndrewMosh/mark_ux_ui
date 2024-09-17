@@ -26,7 +26,7 @@
 		transition: all 0.3s ease;
 
         &:hover {
-            border: 1px solid var(--Accent-20, #ffdb96);
+            border: 1px solid var(--Accent-20, #ffda9656);
             background: var(
                 --Accent-10,
                 radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
@@ -35,7 +35,7 @@
 
 		&--active {
 			border-radius: var(--24, 24px);
-			border: 1px solid var(--Accent-20, #FFDB96);
+			border: 1px solid var(--Accent-20, #ffda9656);
 			background: var(--Accent-10, radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.10) 0%, rgba(249, 195, 93, 0.10) 100%));
 		}
     }
