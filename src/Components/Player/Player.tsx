@@ -1,88 +1,140 @@
-import React, { useEffect, useRef, useState } from 'react';
-import play from '../../assets/play.svg';
-import pause from '../../assets/pause.svg';
-import youtube from '../../assets/youtube.svg';
-import { Link } from 'react-router-dom';
-import mixer from '../../assets/mixer.svg';
-import './Player.scss'
+import React, { useEffect, useRef, useState } from "react";
+import play from "../../assets/play.svg";
+import pause from "../../assets/pause.svg";
+import youtube from "../../assets/youtube.svg";
+import { Link } from "react-router-dom";
+import mixer from "../../assets/mixer.svg";
+import "./Player.scss";
+import low from "../../assets/mixer-low.svg";
+import max from "../../assets/mixer-max.svg";
 
 const Player: React.FC = () => {
-  const playerRef = useRef<HTMLDivElement>(null);
-  const [player, setPlayer] = useState<any>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const [showNotification, setShowNotification] = useState(true);
+    const playerRef = useRef<HTMLDivElement>(null);
+    const [player, setPlayer] = useState<any>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
+    const [showNotification, setShowNotification] = useState(true);
+    const [volume, setVolume] = useState(0.5);
+    const [range, setRange] = useState(false);
+    const volumeRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (window.Twitch && playerRef.current) {
-      const newPlayer = new window.Twitch.Player(playerRef.current, {
-        channel: 'leekbeats', // Замените на нужный канал Twitch
-        autoplay: true, // Включаем автозапуск
-        muted: isMuted, // Начальное состояние звука
-        width: '0',  // Скрываем плеер
-        height: '0', // Скрываем плеер
-      });
+    useEffect(() => {
+        if (window.Twitch && playerRef.current) {
+            const newPlayer = new window.Twitch.Player(playerRef.current, {
+                channel: "leekbeats", // Замените на нужный канал Twitch
+                autoplay: true, // Включаем автозапуск
+                muted: isMuted, // Начальное состояние звука
+                width: "0", // Скрываем плеер
+                height: "0", // Скрываем плеер
+            });
 
-      newPlayer.setVolume(0.5); // Настройка громкости
+            newPlayer.setVolume(volume); // Устанавливаем начальную громкость
 
-      // Обновляем состояние при воспроизведении
-      newPlayer.addEventListener(Twitch.Player.PLAY, () => {
-        setIsPlaying(true);
-        if (!isMuted) {
-          newPlayer.unmute(); // Снимаем звук, если разрешено
+            // Обновляем состояние при воспроизведении
+            newPlayer.addEventListener(Twitch.Player.PLAY, () => {
+                setIsPlaying(true);
+                if (!isMuted) {
+                    newPlayer.unmute(); // Снимаем звук, если разрешено
+                }
+            });
+
+            newPlayer.addEventListener(Twitch.Player.PAUSE, () => setIsPlaying(false));
+            newPlayer.addEventListener(Twitch.Player.READY, () => {
+                if (!isMuted) {
+                    newPlayer.unmute(); // Попытка снять mute после загрузки
+                }
+            });
+
+            setPlayer(newPlayer);
         }
-      });
+    }, [isMuted]);
 
-      newPlayer.addEventListener(Twitch.Player.PAUSE, () => setIsPlaying(false));
-      newPlayer.addEventListener(Twitch.Player.READY, () => {
-        if (!isMuted) {
-          newPlayer.unmute(); // Попытка снять mute после загрузки
+    useEffect(() => {
+        // Обработчик кликов вне элемента volume
+        const handleClickOutside = (event: MouseEvent) => {
+            if (volumeRef.current && !volumeRef.current.contains(event.target as Node)) {
+                setRange(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleUserInteraction = () => {
+        setIsMuted(false); // Размутируем при взаимодействии
+        setShowNotification(false); // Скрываем уведомление
+    };
+
+    const togglePlayPause = () => {
+        if (player) {
+            if (isPlaying) {
+                player.pause();
+            } else {
+                player.play();
+            }
         }
-      });
+    };
 
-      setPlayer(newPlayer);
-    }
-  }, [isMuted]);
+    const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newVolume = parseFloat(event.target.value);
+        setVolume(newVolume);
+        if (player) {
+            player.setVolume(newVolume); // Обновляем громкость плеера
+        }
+    };
 
-  const handleUserInteraction = () => {
-    setIsMuted(false); // Размутируем при взаимодействии
-    setShowNotification(false); // Скрываем уведомление
-  };
-
-  const togglePlayPause = () => {
-    if (player) {
-      if (isPlaying) {
-        player.pause();
-      } else {
-        player.play();
-      }
-    }
-  };
-
-  return (
-    <div className='player'>
-      <div className='player__wrapper' ref={playerRef} onClick={handleUserInteraction}></div> {/* Скрытый плеер */}
-	  <div className="player__buttons">
-		<Link  to='https://www.twitch.tv/leekbeats' target="_blank">
-		<button>
-		<img src={youtube} alt="twitch" />
-		</button>
-		</Link>
-      <button  onClick={togglePlayPause}>
-        <img src={isPlaying ? pause : play} alt={isPlaying ? 'Pause' : 'Play'} />
-      </button>
-	  <button>
-		<img src={mixer} alt="звук" />
-	  </button>
-	  </div>
-      {showNotification && (
-        <div style={{ position: 'fixed', top:'10px', right: '10px', backgroundColor: 'black', padding: '10px', borderRadius: '5px' }}>
-          <p>To hear the audio, please click anywhere on the page.</p>
-          <button style={{color:'white'}} onClick={handleUserInteraction}>Включить </button>
+    return (
+        <div className="player">
+            <div className="player__wrapper" ref={playerRef} onClick={handleUserInteraction}></div> {/* Скрытый плеер */}
+            <div className="player__buttons">
+                <Link to="https://www.twitch.tv/leekbeats" target="_blank">
+                    <button>
+                        <img src={youtube} alt="twitch" />
+                    </button>
+                </Link>
+                <button onClick={togglePlayPause}>
+                    <img src={isPlaying ? pause : play} alt={isPlaying ? "Pause" : "Play"} />
+                </button>
+                <div
+                    onMouseEnter={() => setRange(true)}
+                >
+                    <button>
+                        <img src={mixer} alt="звук" />
+                    </button>
+                    {range && (
+                        <div ref={volumeRef}    onMouseLeave={() => setRange(false)}className="player__volume">
+                            <img src={max} alt="max" />
+                            <input
+                                type="range"
+                                id="volume"
+                                name="volume"
+                                min="0"
+                                max="1"
+                                step="0.01"
+                                value={volume}
+                                onChange={handleVolumeChange}
+                                orient="vertical"
+                                className="styled-slider"
+                            />
+                            <img src={low} alt="low" />
+                        </div>
+                    )}
+                </div>
+            </div>
+            {showNotification && (
+                <div className="player__notification">
+                    <p>To hear the audio, please click anywhere on the page.</p>
+                    <button style={{ color: "white" }} onClick={handleUserInteraction}>
+                        Включить{" "}
+                    </button>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default Player;
