@@ -3,12 +3,29 @@ import constlab from "../assets/constlab.png";
 import mediascope from "../assets/Mediascope.png";
 import dsgners from "../assets/dsgners.png";
 
-export const ClientsData = [
+  
+  
+  interface Content {
+	title: string;
+	text?: string;
+	link?: string;
+  }
+  
+  interface ClientsDataItem {
+	id: string;
+	title: string;
+	subtitle?: string;
+	services?: string[];
+	content?: Content[] |  string[];
+  }
+
+
+export const ClientsData: ClientsDataItem[] = [
     {
         id: "1",
         title: "Клиентам",
-
-        services: { Услуги: ["Product дизайн", "UX/UI дизайн", "Web дизайн", "Дизайн системы"] },
+		subtitle:'Услуги',
+        services: ["Product дизайн", "UX/UI дизайн", "Web дизайн", "Дизайн системы"],
     },
     {
         id: "2",
@@ -63,7 +80,7 @@ export const ClientsData = [
     {
         id: "4",
         title: "Клиенты",
-        content: [{ komodo }, { constlab }, { mediascope }, { dsgners }],
+        content: [komodo, constlab, mediascope , dsgners],
     },
     {
         id: "5",

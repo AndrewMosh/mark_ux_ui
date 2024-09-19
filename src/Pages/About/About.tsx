@@ -8,6 +8,7 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
 
 export const About: React.FC = () => {
     const { setActiveTitle } = useTitleStore();
+	const route = location.pathname
 
     // Используйте хук для отслеживания видимости элементов
     const entries = useIntersectionObserver({
@@ -23,16 +24,19 @@ export const About: React.FC = () => {
         // Находим заголовок по id
         const activeTitle = blocks.find((block) => block.id === visibleTitles[0])?.title || "";
 
-        if (activeTitle) {
+        if (activeTitle && route === "/about") {
             setActiveTitle(activeTitle);
-        }
-    }, [entries, setActiveTitle]);
+        } else {
+			setActiveTitle("");
+		}
+    }, [entries, setActiveTitle, route]);
 
     return (
         <div className="about">
 			<div className="about__images">
                                 <img src={mark1} alt="Mark" />
                                 <img src={mark2} alt="Mark" />
+								<div className="end" data-id={blocks[0].id} />
                             </div>
             <div className="about__container">
                 {blocks.map((block) => (
