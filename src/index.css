@@ -5,12 +5,11 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+	background-color: #070708;
 }
 
 a {
@@ -26,8 +25,8 @@ a:hover {
 body {
     margin: 0;
     min-width: 320px;
-    background-color: #070708;
-    overflow: hidden;
+padding-right: 24px;
+    height: 100vh;
 }
 
 h1 {
@@ -38,7 +37,7 @@ h1 {
 button {
     border: none;
     cursor: pointer;
-	background: none;
+    background: none;
 }
 button:hover {
     border-color: none;

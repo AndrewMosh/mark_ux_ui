@@ -10,6 +10,7 @@ import max from "../../assets/mixer-max.svg";
 
 const Player: React.FC = () => {
     const playerRef = useRef<HTMLDivElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
@@ -49,6 +50,39 @@ const Player: React.FC = () => {
         }
     }, [isMuted]);
 
+	useEffect(() => {
+		const handleVisibilityChange = () => {
+			if (document.visibilityState === "visible" && player) {
+				// Проверка, что плеер готов, и обновление состояния
+				if (player.isPaused()) {
+					setIsPlaying(false);
+				} else {
+					setIsPlaying(true);
+				}
+			}
+		};
+	
+		document.addEventListener("visibilitychange", handleVisibilityChange);
+	
+		return () => {
+			document.removeEventListener("visibilitychange", handleVisibilityChange);
+		};
+	}, [player]);
+	
+	const togglePlayPause = () => {
+		if (player) {
+			if (isPlaying) {
+				player.pause();
+				setIsPlaying(false);
+			} else {
+				player.play();
+				setIsPlaying(true);
+			}
+		}
+	};
+	
+	
+
     useEffect(() => {
         // Обработчик кликов вне элемента volume
         const handleClickOutside = (event: MouseEvent) => {
@@ -69,15 +103,7 @@ const Player: React.FC = () => {
         setShowNotification(false); // Скрываем уведомление
     };
 
-    const togglePlayPause = () => {
-        if (player) {
-            if (isPlaying) {
-                player.pause();
-            } else {
-                player.play();
-            }
-        }
-    };
+
 
     const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newVolume = parseFloat(event.target.value);
@@ -117,7 +143,6 @@ const Player: React.FC = () => {
                                 step="0.01"
                                 value={volume}
                                 onChange={handleVolumeChange}
-                                orient="vertical"
                                 className="styled-slider"
                             />
                             <img src={low} alt="low" />

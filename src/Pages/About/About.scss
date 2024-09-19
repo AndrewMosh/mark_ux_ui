@@ -1,10 +1,37 @@
 .about {
-	overflow: scroll;
-	height: 100vh;
-	position: relative;
+    position: relative;
 
-	&__header {
-		position: sticky;
-		top: 24px;
-	}
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        max-width: 828px;
+        margin: 0 auto;
+    }
+
+    &__block {
+        padding: 32px;
+        border-radius: var(--24, 24px);
+        border: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
+        color: var(--White-75, rgba(217, 217, 217, 0.75));
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 28px;
+    }
+
+    &__title {
+        margin: 0;
+        padding-bottom: 24px;
+        color: white;
+        font-size: 34px;
+        font-weight: 300;
+        line-height: 40px;
+    }
+
+    &__images {
+        display: flex;
+        gap: 24px;
+        padding-bottom: 48px;
+        justify-content: space-between;
+    }
 }
