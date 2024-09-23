@@ -9,25 +9,25 @@ export const MenuData: IMenu[] = [
 	{
 		title: 'Главная',
 		link: '/',
-		img: '/src/assets/main.svg',
+		img: '/src/assets/images/main.svg',
 		active: true
 	},
 	{
 		title: 'Портфолио',
 		link: '/portfolio',
-		img: '/src/assets/portfolio.svg',
+		img: '/src/assets/images/portfolio.svg',
 		active: false
 	},
 	{
 		title: 'Обо мне',
 		link: '/about',
-		img: '/src/assets/aboutme.svg',
+		img: '/src/assets/images/aboutme.svg',
 		active: false
 	},
 	{
 		title: 'Клиентам',
 		link: '/clients',
-		img: '/src/assets/clients.svg',
+		img: '/src/assets/images/clients.svg',
 		active: false
 	},
 ]

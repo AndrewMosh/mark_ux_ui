@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import play from "../../assets/play.svg";
-import pause from "../../assets/pause.svg";
-import youtube from "../../assets/youtube.svg";
+import play from "../../assets/images/play.svg";
+import pause from "../../assets/images/pause.svg";
+import youtube from "../../assets/images/youtube.svg";
 import { Link } from "react-router-dom";
-import mixer from "../../assets/mixer.svg";
+import mixer from "../../assets/images/mixer.svg";
 import "./Player.scss";
-import low from "../../assets/mixer-low.svg";
-import max from "../../assets/mixer-max.svg";
+import low from "../../assets/images/mixer-low.svg";
+import max from "../../assets/images/mixer-max.svg";
 
 const Player: React.FC = () => {
     const playerRef = useRef<HTMLDivElement>(null);

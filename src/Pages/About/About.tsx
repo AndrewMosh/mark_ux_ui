@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { blocks } from "../../utils/AboutBlocks.tsx";
 import "./About.scss";
 import { useTitleStore } from "../../store/useTitleStore";
-import mark1 from "../../assets/mark1.png";
-import mark2 from "../../assets/mark2.png";
+import mark1 from "../../assets/images/mark1.png";
+import mark2 from "../../assets/images/mark2.png";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
 
 export const About: React.FC = () => {

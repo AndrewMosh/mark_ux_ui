@@ -1,3 +1,18 @@
+@font-face {
+	font-family: Raleway;
+	src: url(./assets/fonts/Raleway/static/Raleway-Light.ttf);
+}
+
+@font-face {
+	font-family: Unbounded;
+	src: url(./assets/fonts/Unbounded/static/Unbounded-Light.ttf);
+}
+
+@font-face {
+	font-family: Inter;
+	src: url(./assets/fonts/Inter/static/Inter_18pt-Light.ttf);
+}
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -10,6 +25,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	background-color: #070708;
+}
+
+h3,h2,h1,p {
+	margin: 0;
 }
 
 a {
@@ -27,6 +46,7 @@ body {
     min-width: 320px;
 padding-right: 24px;
     height: 100vh;
+	font-family: Unbounded;
 }
 
 h1 {

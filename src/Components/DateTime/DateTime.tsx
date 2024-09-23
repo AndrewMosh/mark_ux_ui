@@ -51,7 +51,7 @@ const DateTime: React.FC = () => {
         <div className="schedule" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="schedule__date-time">
                 <p>
-                    {time} <span>MSK</span>
+                    {time} <span className="schedule__timezone">MSK</span>
                 </p>
                 <p>{date}</p>
 			

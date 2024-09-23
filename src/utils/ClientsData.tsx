@@ -1,21 +1,25 @@
-import komodo from "../assets/komodo.png";
-import constlab from "../assets/constlab.png";
-import mediascope from "../assets/Mediascope.png";
-import dsgners from "../assets/dsgners.png";
+import komodo from "../assets/images/komodo.png";
+import constlab from "../assets/images/constlab.png";
+import mediascope from "../assets/images/Mediascope.png";
+import dsgners from "../assets/images/dsgners.png";
+import def from "../assets/images/default.png";
+import download from "../assets/images/download2.svg";
+import play from "../assets/images/play2.svg";
 
   
   
   interface Content {
-	title: string;
+	title: string | JSX.Element;
 	text?: string;
 	link?: string;
+	img?: string;
   }
   
   interface ClientsDataItem {
 	id: string;
 	title: string;
 	subtitle?: string;
-	services?: string[];
+	services?: Content[];
 	content?: Content[] |  string[];
   }
 
@@ -25,8 +29,13 @@ export const ClientsData: ClientsDataItem[] = [
         id: "1",
         title: "Клиентам",
 		subtitle:'Услуги',
-        services: ["Product дизайн", "UX/UI дизайн", "Web дизайн", "Дизайн системы"],
-    },
+        services: [
+			{title:(<>Product <br />дизайн</>), img:def},
+			{title:"UX/UI дизайн", img:def},	
+			{title:"Web дизайн", img:def},
+			{title:(<>Дизайн <br />системы</>), img:def},
+		]
+		    },
     {
         id: "2",
         title: "Принципы",
@@ -89,10 +98,12 @@ export const ClientsData: ClientsDataItem[] = [
             {
                 title: "Получить  КП",
                 link: "",
+				img:download
             },
             {
                 title: "Запустить проект",
                 link: "",
+				img:play
             },
         ],
     },
