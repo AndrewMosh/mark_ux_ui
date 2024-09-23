@@ -5,10 +5,13 @@ import { useTitleStore } from "../../store/useTitleStore";
 import mark1 from "../../assets/images/mark1.png";
 import mark2 from "../../assets/images/mark2.png";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
+import { useFadeIn } from "../../hooks/useFadeIn.tsx";
 
 export const About: React.FC = () => {
     const { setActiveTitle } = useTitleStore();
 	const route = location.pathname
+	const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
+
 
     // Используйте хук для отслеживания видимости элементов
     const entries = useIntersectionObserver({
@@ -31,9 +34,13 @@ export const About: React.FC = () => {
 		}
     }, [entries, setActiveTitle, route]);
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
     return (
         <div className="about">
-			<div className="about__images">
+			<div className="about__images" style={fadeInStyle}>
                                 <img src={mark1} alt="Mark" />
                                 <img src={mark2} alt="Mark" />
 								<div className="end" data-id={blocks[0].id} />

@@ -4,9 +4,11 @@ import { useTitleStore } from "../../store/useTitleStore";
 import "./Clients.scss";
 import { ClientsData } from "../../utils/ClientsData";
 import { Link } from "react-router-dom";
+import { useFadeIn } from "../../hooks/useFadeIn";
 
 export const Clients = () => {
     const { setActiveTitle } = useTitleStore();
+	const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
 
     const services = ClientsData[0];
     const principles = ClientsData[1];
@@ -32,9 +34,14 @@ export const Clients = () => {
             setActiveTitle(activeTitle);
         }
     }, [entries, setActiveTitle]);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+	
     return (
         <div className="clients">
-            <div className="clients__container">
+            <div className="clients__container" style={fadeInStyle}>
                 <h2 className="clients__title">{services.subtitle}</h2>
                 <div className="clients__services">
                     {services?.services?.map((service, index) => (

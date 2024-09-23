@@ -6,6 +6,7 @@ const DateTime: React.FC = () => {
     const [time, setTime] = useState<string>("");
     const [date, setDate] = useState<string>("");
     const [showSchedule, setShowSchedule] = useState<boolean>(false); // Состояние для управления видимостью расписания
+	
 
     useEffect(() => {
         // Функция для обновления времени и даты

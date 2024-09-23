@@ -17,7 +17,7 @@ interface PortfolioDataType {
 
 const portfolioTitle = (type: string): JSX.Element => (
     <>
-        Portfolio - <span>{type}</span>
+        Портфолио <span style={{ color: "#FFFFFF8C", fontFamily: 'Raleway', fontSize:'18px' }}>— {type}</span>
     </>
 );
 
@@ -25,13 +25,13 @@ const portfolioTitle = (type: string): JSX.Element => (
 export const PortfolioData: PortfolioDataType = {
     title: "Portfolio",
     list: [
-        { id: "1", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("web") },
-        { id: "2", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("web") },
-        { id: "3", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("web") },
-        { id: "4", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("web") },
-        { id: "5", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("mobile") },
-        { id: "6", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("mobile") },
-        { id: "7", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("mobile") },
-        { id: "8", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("mobile") },
+        { id: "1", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
+        { id: "2", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
+        { id: "3", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
+        { id: "4", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
+        { id: "5", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
+        { id: "6", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
+        { id: "7", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
+        { id: "8", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
     ],
 };

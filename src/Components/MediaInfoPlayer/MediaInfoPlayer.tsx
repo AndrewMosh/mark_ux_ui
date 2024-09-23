@@ -1,4 +1,4 @@
-import Player from "../Player/Player";
+// import Player from "../Player/Player";
 import DateTime from "../DateTime/DateTime";
 import "./MediaInfoPlayer.scss";
 import { useTitleStore } from "../../store/useTitleStore";
@@ -23,7 +23,7 @@ export const MediaInfoPlayer = () => {
         </h1>
       )}
       <div className="media-info-player__wrapper">
-        <Player />
+        {/* <Player /> */}
         <DateTime />
       </div>
     </div>
