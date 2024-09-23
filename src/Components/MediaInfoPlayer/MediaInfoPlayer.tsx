@@ -18,7 +18,7 @@ export const MediaInfoPlayer = () => {
   return (
     <div className="media-info-player" style={{justifyContent: mainComponent ? "flex-end" : "space-between"}}>
       {showTitle && (
-        <h1>
+        <h1 className="media-info-player__title">
           {activeTitle}
         </h1>
       )}

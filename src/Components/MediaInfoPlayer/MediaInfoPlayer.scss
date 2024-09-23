@@ -5,11 +5,18 @@
     right: 24px;
 	left: calc(256px + 48px);
 	display: flex;
-	align-items: flex-start;
+	align-items: baseline;
 	
-	h1 {
+	&__title {
 		margin: 0;
 		transition: all 0.3s ease;
+		font-size: 28px;
+		color:white !important;
+		
+		span {
+			color:white !important;
+			text-decoration: none !important;
+		}
 	}
 
 	&__scrolled {

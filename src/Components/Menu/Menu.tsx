@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export const Menu = () => {
   const location = useLocation(); // Получаем текущий роут
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     // При изменении роута обновляем активный элемент
