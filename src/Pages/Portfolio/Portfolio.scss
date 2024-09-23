@@ -1,0 +1,74 @@
+.portfolio {
+    &__filter {
+        display: flex;
+        justify-content: flex-start;
+        gap: 8px;
+        padding-bottom: 48px;
+    }
+
+    &__button {
+        padding: 16px 20px;
+        color: white;
+        border-radius: var(--24, 24px);
+        border: 1px solid transparent;
+
+        &:hover {
+            border: 1px solid var(--Accent-20, #ffda965c);
+            background: var(
+                --Accent-10,
+                radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
+            );
+        }
+
+        &--active {
+            border: 1px solid var(--Accent-20, #ffda965c);
+            background: var(
+                --Accent-10,
+                radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
+            );
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    &__item {
+        border-radius: var(--40, 40px);
+        background: var(--White-5, rgba(255, 255, 255, 0.03));
+        padding: 20px;
+		overflow: hidden;
+    }
+
+    &__img {
+        padding-bottom: 24px;
+    }
+
+    &__date {
+        color: var(--White-75, rgba(217, 217, 217, 0.75));
+        font-variant-numeric: lining-nums proportional-nums;
+
+        /* Base */
+        font-family: Raleway;
+
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+        padding-bottom: 8px;
+    }
+
+	&__name {
+		/* Heading 4 */
+		font-family: Unbounded;
+		font-size: 24px;
+		font-weight: 300;
+		line-height: 28px; /* 116.667% */ 
+		white-space: nowrap; /* Запрещаем перенос строк */
+		overflow: hidden; /* Обрезаем текст, который выходит за пределы */
+		text-overflow: ellipsis; /* Добавляем троеточие */
+	  }
+	  
+	  
+	  
+}
