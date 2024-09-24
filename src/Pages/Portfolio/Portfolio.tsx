@@ -10,7 +10,7 @@ import useAnimation from '../../hooks/useAnimation';
 
 export const Portfolio: React.FC = () => {
   const { filteredPortfolio, setFilterType, filterPortfolio, filterType } = usePortfolioStore();
-  const { setActiveTitle, setIsScrolled } = useTitleStore();
+  const { setActiveTitle, setIsScrolled, setIsBlurring,activeTitle } = useTitleStore();
   const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
   const [isAnimating, startAnimation] = useAnimation();
 
@@ -50,6 +50,13 @@ useEffect(() => {
     filterPortfolio();
 	
   };
+
+  useEffect(() => {
+	setIsBlurring(true);
+	setTimeout(() => {
+		setIsBlurring(false);
+	}, 1000);
+}, [activeTitle, setIsBlurring]);
 
   useEffect(() => {
     filterPortfolio(); // запуск фильтрации при первом рендере

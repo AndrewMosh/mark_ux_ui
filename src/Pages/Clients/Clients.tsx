@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useFadeIn } from "../../hooks/useFadeIn";
 
 export const Clients = () => {
-    const { setActiveTitle, setIsScrolled } = useTitleStore();
+    const { setActiveTitle, setIsScrolled, setIsBlurring,activeTitle } = useTitleStore();
 	const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
 
 	const handleScroll = () => {
@@ -47,6 +47,13 @@ export const Clients = () => {
             setActiveTitle(activeTitle);
         }
     }, [entries, setActiveTitle]);
+
+	useEffect(() => {
+		setIsBlurring(true);
+		setTimeout(() => {
+			setIsBlurring(false);
+		}, 1000);
+	}, [activeTitle, setIsBlurring]);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);

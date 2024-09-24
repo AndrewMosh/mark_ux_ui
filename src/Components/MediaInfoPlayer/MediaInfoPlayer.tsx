@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 export const MediaInfoPlayer = () => {
-  const { activeTitle, isScrolled, setIsScrolled } = useTitleStore();
+  const { activeTitle, isScrolled, setIsScrolled, isBlurring } = useTitleStore();
   const location = useLocation();
   
   // Список маршрутов, где activeTitle должен отображаться
@@ -30,7 +30,7 @@ export const MediaInfoPlayer = () => {
   return (
     <div className={`media-info-player ${isScrolled ? "media-info-player__scrolled" : ""}`} style={{justifyContent: mainComponent ? "flex-end" : "space-between"}}>
       {showTitle && (
-        <h1 className="media-info-player__title">
+        <h1 className={`media-info-player__title ${isBlurring ? "media-info-player__blur" : ""}`} style={{fontSize:isScrolled ? "28px" : "38px"}}>
           {activeTitle}
         </h1>
       )}

@@ -8,12 +8,13 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
 import { useFadeIn } from "../../hooks/useFadeIn.tsx";
 
 export const About: React.FC = () => {
-    const { setActiveTitle, setIsScrolled } = useTitleStore();
+    const { setActiveTitle, setIsScrolled, setIsBlurring, activeTitle} = useTitleStore();
     const route = location.pathname;
     const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
     const [image1, setImage1] = useState<string | null>(null);
     const [image2, setImage2] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+	
 
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -25,6 +26,7 @@ export const About: React.FC = () => {
           return () => {
               window.removeEventListener("scroll", handleScroll);
           };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [setIsScrolled]);
 
 
@@ -35,7 +37,9 @@ export const About: React.FC = () => {
         threshold: 1.0, // Настройте порог видимости по вашему усмотрению
     });
 
+
     useEffect(() => {
+	
         // Определяем первый видимый заголовок и обновляем состояние
         const visibleTitles = entries.filter((entry) => entry.isIntersecting).map((entry) => entry.target.getAttribute("data-id") || "");
 
@@ -43,11 +47,21 @@ export const About: React.FC = () => {
         const activeTitle = blocks.find((block) => block.id === visibleTitles[0])?.title || "";
 
         if (activeTitle && route === "/about") {
-            setActiveTitle(activeTitle);
+			setActiveTitle(activeTitle);	
         } else {
 			setActiveTitle("");
 		}
+
+		
+	
     }, [entries, setActiveTitle, route]);
+
+	useEffect(() => {
+		setIsBlurring(true);
+		setTimeout(() => {
+			setIsBlurring(false);
+		}, 1000);
+	}, [activeTitle, setIsBlurring]);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
