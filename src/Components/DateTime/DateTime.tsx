@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./DateTime.scss";
 import { Schedule } from "../../utils/Schedule";
+import { useTitleStore } from "../../store/useTitleStore";
 
 const DateTime: React.FC = () => {
     const [time, setTime] = useState<string>("");
     const [date, setDate] = useState<string>("");
     const [showSchedule, setShowSchedule] = useState<boolean>(false); // Состояние для управления видимостью расписания
-	
+	const {isScrolled}=useTitleStore()
 
     useEffect(() => {
         // Функция для обновления времени и даты
@@ -49,7 +50,7 @@ const DateTime: React.FC = () => {
     };
 
     return (
-        <div className="schedule" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className={`${isScrolled ? "schedule__scrolled" : "schedule"}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="schedule__date-time">
                 <p>
                     {time} <span className="schedule__timezone">MSK</span>
@@ -64,6 +65,7 @@ const DateTime: React.FC = () => {
                     {Schedule.map((item, index) => (
                         <li className="schedule__item" key={index}>
                             <p className="schedule__day">{item.day}</p>
+							<div className="schedule__line"></div>
                             <p className="schedule__time">{item.time}</p>
                         </li>
                     ))}

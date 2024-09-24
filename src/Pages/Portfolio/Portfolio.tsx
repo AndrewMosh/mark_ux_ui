@@ -10,14 +10,27 @@ import useAnimation from '../../hooks/useAnimation';
 
 export const Portfolio: React.FC = () => {
   const { filteredPortfolio, setFilterType, filterPortfolio, filterType } = usePortfolioStore();
-  const { setActiveTitle } = useTitleStore();
+  const { setActiveTitle, setIsScrolled } = useTitleStore();
   const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
   const [isAnimating, startAnimation] = useAnimation();
+
+  const handleScroll = () => {
+	const position = window.pageYOffset;
+	setIsScrolled(position > 100);
+  };
+
+  useEffect(() => {
+	window.addEventListener('scroll', handleScroll);
+	return () => {
+	  window.removeEventListener('scroll', handleScroll);
+	};
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setIsScrolled]);
 
    // Используйте хук для отслеживания видимости элементов
    const entries = useIntersectionObserver({
 	root: null,
-	rootMargin: "0px",
+	rootMargin: "-30px",
 	threshold: 1.0, // Настройте порог видимости по вашему усмотрению
 });
 

@@ -4,9 +4,9 @@
     border: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
     background: var(--White-5, rgba(255, 255, 255, 0.03));
     max-width: 237px;
-	backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
     position: relative;
-	cursor: pointer;
+    cursor: pointer;
 
     &:hover {
         background: var(--White-10, rgba(255, 255, 255, 0.1));
@@ -18,7 +18,7 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
-		font-size: 15.5px;
+        font-size: 15.5px;
 
         p {
             &:nth-child(1) {
@@ -28,16 +28,15 @@
         }
     }
 
-	&__timezone {
-		color:rgba(255, 255, 255, 0.55);
-	}
+    &__timezone {
+        color: rgba(255, 255, 255, 0.55);
+    }
 
     &__list {
         list-style: none;
         padding: 0;
         width: 100%;
-		font-size: 14px;
-
+        font-size: 14px;
     }
 
     &__item {
@@ -48,15 +47,31 @@
     }
 
     &--visible {
-		opacity: 1;
-		max-height: 500px; /* Устанавливаем достаточно большое значение, чтобы вмещать содержимое */
-		transition: opacity 0.3s ease, max-height 0.3s ease;
+        font-family: Inter;
+        opacity: 1;
+        max-height: 500px; /* Устанавливаем достаточно большое значение, чтобы вмещать содержимое */
+        transition: opacity 0.5s ease, max-height 0.5s ease;
     }
 
     &--hidden {
-		opacity: 0;
-		max-height: 0;
-		overflow: hidden;
-		transition: opacity 0.3s ease, max-height 0.3s ease;
+        font-family: Inter;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+
+    &__line {
+        height: 1px; /* Высота линии */
+        background-color: rgba(255, 255, 255, 0.1); /* Цвет линии */ /* Отступы вокруг линии */
+        width: 100%;
+    }
+
+    &__time {
+        text-wrap: nowrap;
+    }
+
+    &__scrolled {
+        cursor: pointer;
     }
 }

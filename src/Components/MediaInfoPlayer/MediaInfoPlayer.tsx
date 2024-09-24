@@ -3,9 +3,10 @@ import DateTime from "../DateTime/DateTime";
 import "./MediaInfoPlayer.scss";
 import { useTitleStore } from "../../store/useTitleStore";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const MediaInfoPlayer = () => {
-  const { activeTitle } = useTitleStore();
+  const { activeTitle, isScrolled, setIsScrolled } = useTitleStore();
   const location = useLocation();
   
   // Список маршрутов, где activeTitle должен отображаться
@@ -15,8 +16,19 @@ export const MediaInfoPlayer = () => {
   const showTitle = routesWithTitle.includes(location.pathname);
   const mainComponent = ['/'].includes(location.pathname);
 
+  const handleMainComponent =()=> {
+	if (mainComponent) {
+		setIsScrolled(false);
+	}
+  } 
+
+  useEffect(() => {
+	handleMainComponent();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   return (
-    <div className="media-info-player" style={{justifyContent: mainComponent ? "flex-end" : "space-between"}}>
+    <div className={`media-info-player ${isScrolled ? "media-info-player__scrolled" : ""}`} style={{justifyContent: mainComponent ? "flex-end" : "space-between"}}>
       {showTitle && (
         <h1 className="media-info-player__title">
           {activeTitle}

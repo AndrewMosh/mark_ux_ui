@@ -7,8 +7,21 @@ import { Link } from "react-router-dom";
 import { useFadeIn } from "../../hooks/useFadeIn";
 
 export const Clients = () => {
-    const { setActiveTitle } = useTitleStore();
+    const { setActiveTitle, setIsScrolled } = useTitleStore();
 	const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
+
+	const handleScroll = () => {
+		const position = window.pageYOffset;
+		setIsScrolled(position > 100);
+	  };
+
+	  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setIsScrolled]);
 
     const services = ClientsData[0];
     const principles = ClientsData[1];
@@ -19,7 +32,7 @@ export const Clients = () => {
     // Используйте хук для отслеживания видимости элементов
     const entries = useIntersectionObserver({
         root: null,
-        rootMargin: "0px",
+        rootMargin: "-30px",
         threshold: 1.0, // Настройте порог видимости по вашему усмотрению
     });
 
@@ -28,7 +41,7 @@ export const Clients = () => {
         const visibleTitles = entries.filter((entry) => entry.isIntersecting).map((entry) => entry.target.getAttribute("data-id") || "");
 
         // Находим заголовок по id
-        const activeTitle = ClientsData.find((block) => block.id === visibleTitles[0])?.title || "";
+        const activeTitle = ClientsData.find((block) => block.id === visibleTitles[0])?.title || "Клиентам";
 
         if (activeTitle) {
             setActiveTitle(activeTitle);
@@ -38,7 +51,6 @@ export const Clients = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-	
     return (
         <div className="clients">
             <div className="clients__container" style={fadeInStyle}>

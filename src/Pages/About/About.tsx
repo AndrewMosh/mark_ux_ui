@@ -8,14 +8,24 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
 import { useFadeIn } from "../../hooks/useFadeIn.tsx";
 
 export const About: React.FC = () => {
-    const { setActiveTitle } = useTitleStore();
-	const route = location.pathname
-	const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
-	const [image1, setImage1] = useState<string | null>(null);
+    const { setActiveTitle, setIsScrolled } = useTitleStore();
+    const route = location.pathname;
+    const fadeInStyle = useFadeIn(100, 800); // 100 ms задержка, 800 ms длительность
+    const [image1, setImage1] = useState<string | null>(null);
     const [image2, setImage2] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(true); 
-	
-	
+    const [loading, setLoading] = useState<boolean>(true);
+
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setIsScrolled(position > 100);
+    };
+
+	  useEffect(() => {
+          window.addEventListener("scroll", handleScroll);
+          return () => {
+              window.removeEventListener("scroll", handleScroll);
+          };
+      }, [setIsScrolled]);
 
 
     // Используйте хук для отслеживания видимости элементов
