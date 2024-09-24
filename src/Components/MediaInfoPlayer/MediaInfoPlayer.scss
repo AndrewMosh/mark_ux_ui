@@ -1,16 +1,16 @@
 .media-info-player {
-	z-index: 10;
+	z-index: 2;
 	position: fixed;
     top: 24px;
     right: 24px;
 	left: calc(256px + 48px);
-	display: flex;
-	align-items: baseline;
+	
 	
 	&__title {
 		margin: 0;
 		transition: all 0.3s ease;
 		color:white !important;
+		
 		
 		span {
 			color:white !important;
@@ -29,8 +29,10 @@
 	&__wrapper {
 		display: flex;
 		align-items: flex-start;
-		gap:8px;	
+		gap:8px;
+
 	}
+
 
 	&__blur {
 		animation: bluring 0.8s ease;

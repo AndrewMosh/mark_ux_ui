@@ -1,12 +1,16 @@
 .schedule {
+	position: fixed;
+	top: 24px;
+	right: 24px;
     padding: 20px;
+	z-index: 2;
     border-radius: var(--16, 16px);
     border: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
     background: var(--White-5, rgba(255, 255, 255, 0.03));
     max-width: 237px;
     backdrop-filter: blur(30px);
-    position: relative;
     cursor: pointer;
+	
 
     &:hover {
         background: var(--White-10, rgba(255, 255, 255, 0.1));
@@ -71,7 +75,22 @@
         text-wrap: nowrap;
     }
 
+
     &__scrolled {
         cursor: pointer;
+		position: fixed;
+        top: 24px;
+        right: 24px;
+        padding: 20px;
+        border-radius: var(--16, 16px);
+		z-index: 10;	
+
+        &:hover {
+			background: var(--White-10, rgba(255, 255, 255, 0.10));
+			
+			/* BG blur */
+			backdrop-filter: blur(30px);
+			
+        }
     }
 }

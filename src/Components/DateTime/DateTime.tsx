@@ -60,6 +60,7 @@ const DateTime: React.FC = () => {
             </div>
 
             {/* Окошко с расписанием */}
+			
 			<div className={`${showSchedule ? "schedule--visible" : "schedule--hidden"}`}>
                 <ul className="schedule__list">
                     {Schedule.map((item, index) => (
@@ -71,7 +72,6 @@ const DateTime: React.FC = () => {
                     ))}
                 </ul>
             </div>
-          
         </div>
     );
 };

@@ -6,40 +6,45 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 export const MediaInfoPlayer = () => {
-  const { activeTitle, isScrolled, setIsScrolled, isBlurring } = useTitleStore();
-  const location = useLocation();
-  
-  // Список маршрутов, где activeTitle должен отображаться
-  const routesWithTitle = ["/about", "/portfolio", "/clients"]; // Пример маршрутов
+    const { activeTitle, isScrolled, setIsScrolled, isBlurring } = useTitleStore();
+    const location = useLocation();
 
-  // Проверяем, если текущий маршрут должен показывать заголовок
-  const showTitle = routesWithTitle.includes(location.pathname);
-  const mainComponent = ['/'].includes(location.pathname);
+    // Список маршрутов, где activeTitle должен отображаться
+    const routesWithTitle = ["/about", "/portfolio", "/clients"]; // Пример маршрутов
 
-  const handleMainComponent =()=> {
-	if (mainComponent) {
-		setIsScrolled(false);
-	}
-  } 
+    // Проверяем, если текущий маршрут должен показывать заголовок
+    const showTitle = routesWithTitle.includes(location.pathname);
+    const mainComponent = ["/"].includes(location.pathname);
 
-  useEffect(() => {
-	handleMainComponent();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+    const handleMainComponent = () => {
+        if (mainComponent) {
+            setIsScrolled(false);
+        }
+    };
 
-  return (
-    <div className={`media-info-player ${isScrolled ? "media-info-player__scrolled" : ""}`} style={{justifyContent: mainComponent ? "flex-end" : "space-between"}}>
-      {showTitle && (
-        <h1 className={`media-info-player__title ${isBlurring ? "media-info-player__blur" : ""}`} style={{fontSize:isScrolled ? "28px" : "38px"}}>
-          {activeTitle}
-        </h1>
-      )}
-      <div className="media-info-player__wrapper">
-        {/* <Player /> */}
-        <DateTime />
-      </div>
-    </div>
-  );
-}
+    useEffect(() => {
+        handleMainComponent();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location]);
 
-
+    return (
+        <>
+            <div
+                className={`media-info-player ${isScrolled ? "media-info-player__scrolled" : ""}`}
+                style={{ justifyContent: mainComponent ? "flex-end" : "space-between" }}
+            >
+                {showTitle && (
+                    <h1
+                        className={`media-info-player__title ${isBlurring ? "media-info-player__blur" : ""}`}
+                        style={{ fontSize: isScrolled ? "28px" : "38px", paddingTop: isScrolled ? "0" : "6px" }}
+                    >
+                        {activeTitle}
+                    </h1>
+                )}
+            </div>
+            <div className="media-info-player__wrapper">
+                <DateTime />
+            </div>
+        </>
+    );
+};
