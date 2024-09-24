@@ -4,39 +4,42 @@
     border-top: 1px solid #ffffff08;
     border-bottom: 1px solid #ffffff08;
     padding: 20px 16px;
-	
+
     &__item {
-		display: flex;
-		flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
 
     &__button {
-		font-size: 16px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 24px; /* 150% */
-		color:white;
-		display: flex;
+        color: white;
+        display: flex;
         align-items: center;
         gap: 12px;
-		padding: 16px;
+        padding: 16px;
         border: 1px solid transparent;
-		cursor: pointer;
-		border-radius: var(--24, 24px);
-		background-color: transparent;
-		transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: var(--24, 24px);
+        background-color: transparent;
+        transition: all 0.3s ease;
 
         &:hover {
+            background: var(--White-10, rgba(255, 255, 255, 0.1));
+        }
+
+        &:active {
+            background: var(--White-15, rgba(255, 255, 255, 0.15));
+        }
+
+        &--active {
+            border-radius: var(--24, 24px);
             border: 1px solid var(--Accent-20, #ffda9656);
             background: var(
                 --Accent-10,
                 radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
             );
         }
-
-		&--active {
-			border-radius: var(--24, 24px);
-			border: 1px solid var(--Accent-20, #ffda9656);
-			background: var(--Accent-10, radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.10) 0%, rgba(249, 195, 93, 0.10) 100%));
-		}
     }
 }
