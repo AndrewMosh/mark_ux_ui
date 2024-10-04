@@ -6,6 +6,7 @@ import mark1 from "../../assets/images/mark1.png";
 import mark2 from "../../assets/images/mark2.png";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver.ts";
 import { useFadeIn } from "../../hooks/useFadeIn.tsx";
+import { Loader } from "../../Components/Loader/Loader.tsx";
 
 export const About: React.FC = () => {
     const { setActiveTitle, setIsScrolled, setIsBlurring, activeTitle} = useTitleStore();
@@ -98,7 +99,7 @@ export const About: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <div className="loading">Загрузка...</div>; // Показать индикатор загрузки
+        return <Loader />; // Показать индикатор загрузки
     }
 
 

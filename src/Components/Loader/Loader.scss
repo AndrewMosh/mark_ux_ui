@@ -1,0 +1,24 @@
+.skeleton {
+	display: flex;
+	gap:24px;
+	justify-content: space-between;
+
+
+	&__item {
+		background: var(--White-5, rgba(255, 255, 255, 0.03));
+		border-radius: var(--24, 24px);
+		width: 544px;
+		height: 600px;
+		animation: skeleton 1s ease-in-out infinite alternate;
+	}
+
+	@keyframes skeleton {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.5;
+		}
+		
+	}
+}
