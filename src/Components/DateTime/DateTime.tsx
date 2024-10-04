@@ -67,7 +67,7 @@ const DateTime: React.FC = () => {
                         <li className="schedule__item" key={index}>
                             <p className="schedule__day">{item.day}</p>
 							<div className="schedule__line"></div>
-                            <p className="schedule__time">{item.time}</p>
+                            <p className={item.time==='Выходной'?'schedule__time schedule__time--dayoff':'schedule__time'}>{item.time}</p>
                         </li>
                     ))}
                 </ul>

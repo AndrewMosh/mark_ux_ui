@@ -1,6 +1,6 @@
 import React from "react";
-import bg1 from "../../assets/images/background1.png";
-import bg2 from "../../assets/images/background2.png";
+import bg1 from "../../assets/images/background1.svg";
+import bg2 from "../../assets/images/background2.svg";
 import './EarthMapBackground.css'
 
 const EarthMapBackground: React.FC = () => {

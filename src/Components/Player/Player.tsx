@@ -7,6 +7,8 @@ import mixer from "../../assets/images/mixer.svg";
 import "./Player.scss";
 import low from "../../assets/images/mixer-low.svg";
 import max from "../../assets/images/mixer-max.svg";
+import { useTitleStore } from "../../store/useTitleStore";
+import off from "../../assets/images/mixer-off.svg";
 
 const Player: React.FC = () => {
     const playerRef = useRef<HTMLDivElement>(null);
@@ -14,10 +16,10 @@ const Player: React.FC = () => {
     const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
-    const [showNotification, setShowNotification] = useState(true);
-    const [volume, setVolume] = useState(0.5);
+    const [volume, setVolume] = useState(0.0);
     const [range, setRange] = useState(false);
     const volumeRef = useRef<HTMLDivElement>(null);
+	const {isScrolled}=useTitleStore()
 
     useEffect(() => {
         if (window.Twitch && playerRef.current) {
@@ -100,8 +102,20 @@ const Player: React.FC = () => {
 
     const handleUserInteraction = () => {
         setIsMuted(false); // Размутируем при взаимодействии
-        setShowNotification(false); // Скрываем уведомление
     };
+
+	const handleSound = () => {
+		if (volume===0.0) {
+		setVolume(0.5);
+			setIsMuted(false);
+		} else {
+			setVolume(0.0);
+			setIsMuted(true);
+		}
+		if (player) {
+            player.setVolume(volume); // Обновляем громкость плеера
+        }
+	};
 
 
 
@@ -114,8 +128,7 @@ const Player: React.FC = () => {
     };
 
     return (
-        <div className="player">
-            <div className="player__wrapper" ref={playerRef} onClick={handleUserInteraction}></div> {/* Скрытый плеер */}
+		<div className={isScrolled ? "player__scrolled" : "player"}>            <div className="player__wrapper" ref={playerRef} onClick={handleUserInteraction}></div> {/* Скрытый плеер */}
             <div className="player__buttons">
                 <Link to="https://www.twitch.tv/leekbeats" target="_blank">
                     <button>
@@ -129,7 +142,7 @@ const Player: React.FC = () => {
                     onMouseEnter={() => setRange(true)}
                 >
                     <button>
-                        <img src={mixer} alt="звук" />
+                        <img src={volume===0.0? off:mixer} alt="звук" onClick={handleSound} />
                     </button>
                     {range && (
                         <div ref={volumeRef}    onMouseLeave={() => setRange(false)}className="player__volume">
@@ -150,14 +163,6 @@ const Player: React.FC = () => {
                     )}
                 </div>
             </div>
-            {showNotification && (
-                <div className="player__notification">
-                    <p>To hear the audio, please click anywhere on the page.</p>
-                    <button style={{ color: "white" }} onClick={handleUserInteraction}>
-                        Включить{" "}
-                    </button>
-                </div>
-            )}
         </div>
     );
 };

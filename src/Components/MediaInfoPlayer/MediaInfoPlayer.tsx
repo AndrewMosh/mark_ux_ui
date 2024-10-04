@@ -4,10 +4,12 @@ import "./MediaInfoPlayer.scss";
 import { useTitleStore } from "../../store/useTitleStore";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+// import Player from "../Player/Player";
 
 export const MediaInfoPlayer = () => {
     const { activeTitle, isScrolled, setIsScrolled, isBlurring } = useTitleStore();
     const location = useLocation();
+
 
     // Список маршрутов, где activeTitle должен отображаться
     const routesWithTitle = ["/about", "/portfolio", "/clients"]; // Пример маршрутов
@@ -43,6 +45,7 @@ export const MediaInfoPlayer = () => {
                 )}
             </div>
             <div className="media-info-player__wrapper">
+				{/* <Player /> */}
                 <DateTime />
             </div>
         </>

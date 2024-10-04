@@ -1,16 +1,12 @@
 .schedule {
-	position: fixed;
-	top: 24px;
-	right: 24px;
     padding: 20px;
-	z-index: 2;
+    z-index: 2;
     border-radius: var(--16, 16px);
     border: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
     background: var(--White-5, rgba(255, 255, 255, 0.03));
     max-width: 237px;
     backdrop-filter: blur(30px);
     cursor: pointer;
-	
 
     &:hover {
         background: var(--White-10, rgba(255, 255, 255, 0.1));
@@ -55,6 +51,7 @@
         opacity: 1;
         max-height: 500px; /* Устанавливаем достаточно большое значение, чтобы вмещать содержимое */
         transition: opacity 0.5s ease, max-height 0.5s ease;
+		color:white
     }
 
     &--hidden {
@@ -73,24 +70,28 @@
 
     &__time {
         text-wrap: nowrap;
-    }
 
+        &--dayoff {
+            color: var(--White-25, rgba(255, 255, 255, 0.25));
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px; /* 142.857% */
+        }
+
+    }
 
     &__scrolled {
         cursor: pointer;
-		position: fixed;
-        top: 24px;
-        right: 24px;
         padding: 20px;
         border-radius: var(--16, 16px);
-		z-index: 10;	
+        z-index: 10;
 
         &:hover {
-			background: var(--White-10, rgba(255, 255, 255, 0.10));
-			
-			/* BG blur */
-			backdrop-filter: blur(30px);
-			
+            background: var(--White-10, rgba(255, 255, 255, 0.1));
+
+            /* BG blur */
+            backdrop-filter: blur(30px);
         }
     }
 }
