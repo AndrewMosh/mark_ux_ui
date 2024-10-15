@@ -10,6 +10,10 @@
         justify-content: center;
         margin-left: 256px;
         padding-left: 48px;
+		
+		@media (max-width: 768px) {
+			margin-left: 0;
+		}
     }
 
     &__title {

@@ -11,6 +11,10 @@
     max-width: 232px;
 	font-family: Raleway;
 
+	@media (max-width: 768px) {
+		display: none;
+	}
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -42,6 +46,8 @@
         padding: 16px;
         border-top: 1px solid #ffffff08;
     }
+
+
 }
 
 .example {

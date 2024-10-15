@@ -8,6 +8,11 @@
     backdrop-filter: blur(30px);
     cursor: pointer;
 
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+
     &:hover {
         background: var(--White-10, rgba(255, 255, 255, 0.1));
         backdrop-filter: blur(30px);

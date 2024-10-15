@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./DateTime.scss";
 import { Schedule } from "../../utils/Schedule";
 import { useTitleStore } from "../../store/useTitleStore";
+import { useToggleMenuStore } from "../../store/useToggleMenuStore";
+import { useShowSchedule } from "../../store/useShowSchedule";
 
 const DateTime: React.FC = () => {
     const [time, setTime] = useState<string>("");
     const [date, setDate] = useState<string>("");
-    const [showSchedule, setShowSchedule] = useState<boolean>(false); // Состояние для управления видимостью расписания
+const {showSchedule, toggleSchedule, setSchedule} = useShowSchedule()
 	const {isScrolled}=useTitleStore()
+	const {menuOpen}= useToggleMenuStore()
 
     useEffect(() => {
         // Функция для обновления времени и даты
@@ -42,15 +45,21 @@ const DateTime: React.FC = () => {
 
     // Обработчики наведения и убирания курсора
     const handleMouseEnter = () => {
-        setShowSchedule(true);
+		setSchedule(true);
     };
 
     const handleMouseLeave = () => {
-        setShowSchedule(false);
+        setSchedule(false);
     };
 
+	const handleClickMobile=()=>{
+		if (menuOpen) {
+			toggleSchedule()
+		}
+	}
+
     return (
-        <div className={`${isScrolled ? "schedule__scrolled" : "schedule"}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className={`${isScrolled || menuOpen ? "schedule__scrolled" : "schedule"}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClickMobile}>
             <div className="schedule__date-time">
                 <p>
                     {time} <span className="schedule__timezone">MSK</span>

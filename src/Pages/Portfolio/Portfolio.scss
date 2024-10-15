@@ -1,9 +1,15 @@
 .portfolio {
+	padding-right: 24px;
+	
     &__filter {
         display: flex;
         justify-content: flex-start;
         gap: 8px;
         padding-bottom: 48px;
+
+		@media (max-width: 768px) {
+		padding-top: 50px;
+		}
     }
 
     &__button {

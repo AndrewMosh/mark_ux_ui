@@ -2,10 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import "./Menu.scss";
 import { MenuData } from "../../utils/MenuData";
 import { useState, useEffect } from "react";
+import { useToggleMenuStore } from "../../store/useToggleMenuStore";
 
 export const Menu = () => {
   const location = useLocation(); // Получаем текущий роут
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const {toggleMenu} = useToggleMenuStore();
 
   useEffect(() => {
     // При изменении роута обновляем активный элемент
@@ -22,7 +24,10 @@ export const Menu = () => {
           key={index}
           to={item.link}
           className='menu__item'
-          onClick={() => setActiveIndex(index)}
+          onClick={() => {
+			setActiveIndex(index)
+			toggleMenu();
+		  } }
         >
           <button
             className={`menu__button ${activeIndex === index ? "menu__button--active" : ""}`}
