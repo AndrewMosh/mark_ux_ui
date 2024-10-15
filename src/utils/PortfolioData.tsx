@@ -1,4 +1,5 @@
 import def from "../assets/images/defPortfolio.png";
+import dsigner from "../assets/images/DSGNERS-portfolio.png";
 
 // Интерфейс для одного элемента портфолио
 export interface PortfolioItem {
@@ -8,6 +9,7 @@ export interface PortfolioItem {
     name: string;
     type: string;
     title: JSX.Element;
+	link: string;
 }
 
 interface PortfolioDataType {
@@ -25,13 +27,13 @@ const portfolioTitle = (type: string): JSX.Element => (
 export const PortfolioData: PortfolioDataType = {
     title: "Portfolio",
     list: [
-        { id: "1", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
-        { id: "2", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
-        { id: "3", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
-        { id: "4", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web") },
-        { id: "5", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
-        { id: "6", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
-        { id: "7", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
-        { id: "8", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile") },
+        { id: "1", img: dsigner, date: "DSGNERS, Mobile, 2023", name: "DSGNERS", type: "web", title: portfolioTitle("Web"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "2", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "3", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "4", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "web", title: portfolioTitle("Web"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "5", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "6", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "7", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
+        { id: "8", img: def, date: "Crypto, Mobile, 2023", name: "Alpine — cryptowallet", type: "mobile", title: portfolioTitle("Mobile"), link: 'https://www.behance.net/gallery/210218297/DSGNERS-razdel-reklama' },
     ],
 };
