@@ -4,6 +4,10 @@
 	align-items: center;
 	justify-content: space-between;
 
+	@media screen and (max-width: 768px) {
+		padding: 12px 0 12px 12px;
+	}
+
     &__container {
         display: flex;
         align-items: center;
@@ -28,11 +32,8 @@
 	&__burger {
 		display: none;
 		cursor: pointer;
-		border-left: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));;
-		
-		img {
-			padding: 20px;
-		}
+		border-left: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
+		padding: 16px;
 
 		@media screen and (max-width: 768px) {
 			display: block;

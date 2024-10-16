@@ -1,7 +1,7 @@
 .mobile-bar {
 	display: none;
 	position: fixed;
-	top:20px;
+	top:16px;
 	z-index: 10;
 	width: 100%;
 	transition: all 0.5s ease;
@@ -14,6 +14,7 @@
 		display: flex;
 		flex-direction: column;
 		gap:10px;
+		padding: 16px;
 	}
 
 	&__wrapper {

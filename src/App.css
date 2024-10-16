@@ -4,10 +4,10 @@
 
 .app__body {
 	margin-left: 256px;
-	padding: 115px 0 48px 48px;
+	padding: 115px 24px 48px 48px;
 
 	@media (max-width: 768px) {
 		margin-left: 0;
-		padding-top: 150px;
+		padding: 150px 16px 48px 16px;
 	}
 }
