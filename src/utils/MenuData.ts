@@ -1,3 +1,8 @@
+import main from '/src/assets/images/main.svg'
+import portfolio from '/src/assets/images/portfolio.svg'
+import about from '/src/assets/images/aboutme.svg'
+import clients from '/src/assets/images/clients.svg'
+
 interface IMenu {
 	title: string
 	link: string
@@ -9,25 +14,25 @@ export const MenuData: IMenu[] = [
 	{
 		title: 'Главная',
 		link: '/',
-		img: '/src/assets/images/main.svg',
+		img: main ,
 		active: true
 	},
 	{
 		title: 'Портфолио',
 		link: '/portfolio',
-		img: '/src/assets/images/portfolio.svg',
+		img: portfolio,
 		active: false
 	},
 	{
 		title: 'Обо мне',
 		link: '/about',
-		img: '/src/assets/images/aboutme.svg',
+		img: about,
 		active: false
 	},
 	{
 		title: 'Клиентам',
 		link: '/clients',
-		img: '/src/assets/images/clients.svg',
+		img: clients,
 		active: false
 	},
 ]
