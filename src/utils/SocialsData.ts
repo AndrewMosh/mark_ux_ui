@@ -1,3 +1,9 @@
+import insta from '/src/assets/images/insta.svg';
+import hh from '/src/assets/images/hh.svg';
+import linkedin from '/src/assets/images/linkedin.svg';
+import behance from '/src/assets/images/Behance.svg';
+import cv from '/src/assets/images/download.svg';
+import email from '/src/assets/images/email.svg';
 interface ISocials {
 	title: string
 	link: string
@@ -8,31 +14,31 @@ export const SocialsData: ISocials[] = [
 	{
 		title: 'instagram',
 		link: '',
-		img: '/src/assets/images/insta.svg',
+		img: insta,
 	},
 	{
 		title: 'Linkedin',
 		link: '',
-		img: '/src/assets/images/linkedin.svg',
+		img: hh,
 	},
 	{
 		title: 'HH',
 		link: '',
-		img: '/src/assets/images/hh.svg',
+		img: linkedin,
 	},
 	{
 		title: 'Behance',
 		link: '',
-		img: '/src/assets/images/Behance.svg',
+		img: behance,
 	},
 	{
 		title: 'CV',
 		link: '',
-		img: '/src/assets/images/download.svg',
+		img: cv,
 	},
 	{
 		title: 'email',
 		link: '',
-		img: '/src/assets/images/email.svg',
+		img: email,
 	}
 ]
