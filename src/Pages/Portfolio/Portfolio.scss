@@ -1,14 +1,13 @@
 .portfolio {
-	
     &__filter {
         display: flex;
         justify-content: flex-start;
         gap: 8px;
         padding-bottom: 48px;
 
-		@media (max-width: 768px) {
-		padding-top: 50px;
-		}
+        @media (max-width: 768px) {
+            padding-top: 50px;
+        }
     }
 
     &__button {
@@ -42,21 +41,27 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
 
-		@media (max-width: 900px) {
-			grid-template-columns: repeat(1, 1fr);
-		}
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
     &__item {
         border-radius: var(--40, 40px);
-        background: var(--White-5, rgba(255, 255, 255, 0.03));
+        background-color: rgba(255, 255, 255, 0.03);
         padding: 20px;
         overflow: hidden;
+        transition: all 0.6s ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+        }
     }
 
     &__img {
         padding-bottom: 24px;
-		width:100%;
+        width: 100%;
     }
 
     &__date {
@@ -82,18 +87,18 @@
         text-overflow: ellipsis; /* Добавляем троеточие */
     }
 
-	&__fade {
-		animation: fade 0.5s ease-in-out;
-	
-		@keyframes fade {
-			0% {
-				opacity: 0;
-				transform: translateX(-20px);
-			}
-			100% {
-				opacity: 1;
-				transform: translateX(0);
-			}
-		}
-	}
+    &__fade {
+        animation: fade 0.5s ease-in-out;
+
+        @keyframes fade {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
 }

@@ -74,12 +74,12 @@ useEffect(() => {
 
       <div className={`portfolio__list ${isAnimating ? "portfolio__fade" : ""}`}>
         {filteredPortfolio.map((item) => (
-          <div className='portfolio__item' key={item.id} id={item.id} style={fadeInStyle}  >
+          <a className='portfolio__item' key={item.id} id={item.id} style={fadeInStyle} href={item.link} target="_blank" rel="noreferrer"  >
             <img className='portfolio__img' src={item.img} alt={item.name} />
 			<p className='portfolio__date'>{item.date}</p>
             <p className='portfolio__name'>{item.name}</p>
 			<div className="end" data-id={item.id} />		
-          </div>
+          </a>
         ))}
       </div>
     </div>
