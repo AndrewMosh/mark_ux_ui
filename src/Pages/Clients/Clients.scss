@@ -1,5 +1,8 @@
 .clients {
-	
+    @media screen and (max-width: 768px) {
+        margin-top: 45px;
+    }
+
     &__services {
         display: flex;
         flex-wrap: wrap;
@@ -64,6 +67,10 @@
         grid-template-columns: 1fr 1fr;
         gap: 24px;
         padding-bottom: 74px;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__process {
@@ -81,8 +88,8 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 24px;
-		overflow-x: scroll;
-		scrollbar-width: none;
+        overflow-x: scroll;
+        scrollbar-width: none;
     }
 
     &__img {
@@ -97,8 +104,18 @@
 
     &__letstart-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "a c"
+            "b c";
         gap: 24px;
+
+        @media screen and (max-width: 962px) {
+        	grid-template-areas:
+            "a"
+            "b"
+			"c"
+			;
+        }
     }
 
     &__letstart {
@@ -106,9 +123,7 @@
         border: 1px solid var(--White-10, rgba(255, 255, 255, 0.1));
         background: var(--White-5, rgba(255, 255, 255, 0.03));
         padding: 24px;
-        height: 260px;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
     }
 
@@ -117,6 +132,28 @@
         display: flex;
         border-radius: var(--24, 24px);
         background: var(--Accent-100, radial-gradient(100% 100% at 50.01% 0%, #ffdb96 0%, #f9c35d 100%));
-        align-self: flex-end;
+        align-self: flex-start;
+
+        &--down {
+            align-self: flex-end;
+        }
+    }
+
+    &__size {
+        color: var(--White-75, rgba(217, 217, 217, 0.75));
+        font-size: base;
+        line-height: 24px; /* 150% */
+    }
+
+    &__card1 {
+        grid-area: a;
+    }
+
+    &__card2 {
+        grid-area: b;
+    }
+
+    &__card3 {
+        grid-area: c;
     }
 }

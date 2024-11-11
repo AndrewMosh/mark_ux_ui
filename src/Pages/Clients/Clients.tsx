@@ -122,19 +122,25 @@ export const Clients = () => {
                 <h2 className="clients__title">{letstart.title}</h2>
                 <div className="clients__letstart-container">
                     {letstart?.content?.map((el, index) => (
-                        <div key={index} id={letstart.id}>
+						<>
+                        <div key={index} id={letstart.id} className={`clients__letstart clients__card${index+1}`} >
                             {typeof el === "string" ? (
                                 <p>{el}</p>
                             ) : (
-                                <div className="clients__letstart">
+                                <>
+								<div> 
                                     <h3 className="clients__subtitle">{el.title}</h3>
-                                    <Link className="clients__link" to={el.link ?? ""} download={el.title}>
+									<div className="clients__size">{el.size}</div>
+									</div>
+                                    <Link className={index===2?' clients__link clients__link--down':'clients__link'} to={el.link ?? ""} download={el.title}>
                                         <img src={el.img} alt="" />
                                     </Link>
-                                </div>
+                                </>
                             )}
-                            <div className="end" data-id={letstart.id} />
+                            
                         </div>
+						<div className="end" data-id={letstart.id} />
+						</>
                     ))}
                 </div>
             </div>

@@ -13,6 +13,7 @@ import play from "../assets/images/play2.svg";
 	text?: string;
 	link?: string;
 	img?: string;
+	size?: string;
   }
   
   interface ClientsDataItem {
@@ -96,12 +97,19 @@ export const ClientsData: ClientsDataItem[] = [
         title: "Начнем?",
         content: [
             {
-                title: "Получить  КП",
+                title: "Cкачать  КП",
                 link: "",
-				img:download
+				img:download,
+				size:'10MB'
+            },
+			{
+                title: "Cкачать  Бриф",
+                link: "",
+				img:download,
+				size:'10MB'
             },
             {
-                title: "Запустить проект",
+                title: "Заказать проект",
                 link: "",
 				img:play
             },

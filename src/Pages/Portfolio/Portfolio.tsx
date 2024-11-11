@@ -30,7 +30,7 @@ export const Portfolio: React.FC = () => {
    // Используйте хук для отслеживания видимости элементов
    const entries = useIntersectionObserver({
 	root: null,
-	rootMargin: "-30px",
+	rootMargin: "0px",
 	threshold: 1.0, // Настройте порог видимости по вашему усмотрению
 });
 

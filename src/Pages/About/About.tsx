@@ -34,7 +34,7 @@ export const About: React.FC = () => {
     // Используйте хук для отслеживания видимости элементов
     const entries = useIntersectionObserver({
         root: null,
-        rootMargin: "0px",
+        rootMargin: "10px",
         threshold: 1.0, // Настройте порог видимости по вашему усмотрению
     });
 
@@ -45,7 +45,7 @@ export const About: React.FC = () => {
         const visibleTitles = entries.filter((entry) => entry.isIntersecting).map((entry) => entry.target.getAttribute("data-id") || "");
 
         // Находим заголовок по id
-        const activeTitle = blocks.find((block) => block.id === visibleTitles[0])?.title || "";
+        const activeTitle = blocks.find((block) => block.id === visibleTitles[0])?.title || "А это я";
 
         if (activeTitle && route === "/about") {
 			setActiveTitle(activeTitle);	
@@ -113,7 +113,7 @@ export const About: React.FC = () => {
             <div className="about__container">
                 {blocks.map((block) => (
                     <div className="about__block" key={block.id} id={block.id}>
-                        {block.id !== "1" && <h2 className="about__title">{block.title}</h2>}
+                        <h2 className="about__title">{block.title}</h2>
                         <p className="about__text">{block.text}</p>
                         <div className="end" data-id={block.id} />
                     </div>
