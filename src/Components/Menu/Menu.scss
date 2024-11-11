@@ -40,7 +40,26 @@
                 --Accent-10,
                 radial-gradient(100% 100% at 50.01% 0%, rgba(255, 219, 150, 0.1) 0%, rgba(249, 195, 93, 0.1) 100%)
             );
-			pointer-events: none;
+            pointer-events: none;
         }
+    }
+
+    &__unread {
+        border-radius: var(--4, 4px);
+        background: var(--White-15, rgba(255, 255, 255, 0.15));
+        padding: 0 6px;
+        margin-left: 20px;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+		animation: backgroundAnimation 2s infinite;
+
+		@keyframes backgroundAnimation {
+			0% { background: var(--White-15, rgba(255, 255, 255, 0.15)); }
+			50% { background: var(--White-20, rgba(255, 255, 255, 0.2)); }
+			100% { background: var(--White-15, rgba(255, 255, 255, 0.15)); }	
+		}
     }
 }
